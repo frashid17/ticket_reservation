@@ -16,7 +16,7 @@ background-color:f1f1f1;
 </head>
 <body>
     <div class="ui inverted huge borderless fixed fluid menu">
-      <a class="header item">TICKET RESERVATION SYSTEM</a>
+      <a class="header item">NAEKANA SACCO TICKET RESERVATION SYSTEM</a>
     </div><br>
 <div class="ui text container" style="margin-top:130px">
 <div id="err001" class="ui success icon message">
