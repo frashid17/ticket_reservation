@@ -17,7 +17,7 @@
   </head>
   <body>
     <div class="ui inverted huge borderless fixed fluid menu">
-      <a class="header item">TICKET RESERVATION SYSTEM</a>
+      <a class="header item">NAEKANA SACCO TICKET RESERVATION SYSTEM</a>
       <div class="right menu">
         <div class="item">
           <div class="ui small input">
@@ -49,7 +49,7 @@
         <div class="ui segment">
   <img class="ui centered medium circular image" src="developer.jpg"><br>
   <div class="ui horizontal divider">About me</div>
-		<p>Hi, there!. This is George, the developer A.K.A. Swagfin Thrones. I love programming, i really do, it happens to be my hobby. Its what i do best</p> 
+		<p>Hi, there!. This is Swaleh, a student at Kenya Methodist University</p> 
 		<div class="ui horizontal divider">Contacts Details</div>
 		<p>Wondering where to find me? Reach me at;<br> Email: <a>georgewainaina18@gmail.com</a> <br>Personal Contact : <a>+254 705418696</a><br> I am willing to teach new programmers</p>
 		</div>		
