@@ -44,7 +44,7 @@
             <div class="row">
          <h1 class="ui huge header">About Developer</h1>
          </div>
-        <div class="ui horizontal divider"> SWAGFIN THRONES/GEORGE WAINAINA</div>      
+        <div class="ui horizontal divider"> Naekana Ticket Reservation System| Swaleh Salim</div>      
 		<div class="row">
         <div class="ui segment">
   <img class="ui centered medium circular image" src="developer.jpg"><br>
