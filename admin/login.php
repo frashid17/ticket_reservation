@@ -60,9 +60,9 @@ echo ("<p style='color:red;text-align:center'> Invalid Username or Password</p>"
 </div>
 </form>
 
-<div class="ui bottom attached warning message">
+<!-- <div class="ui bottom attached warning message">
 <i class="icon help"></i> Forgotten password? Just use Username as<a href="#0"> admin</a> and password as <a href="#">password</a> to access.
-</div>
+</div> -->
 
 
 
