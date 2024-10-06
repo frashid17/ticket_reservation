@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welcome to Swagfin Inc</title>
+<title>Welcome to Naekana Sacco Ticket Reservation system</title>
 
     <link href="static/dist/semantic-ui/semantic.min.css" rel="stylesheet" type="text/css" />
     <script src="static/dist/jquery/jquery.min.js"></script>
@@ -16,7 +16,7 @@ background-color:f1f1f1;
 </head>
 <body>
     <div class="ui inverted huge borderless fixed fluid menu">
-      <a class="header item">TICKET RESERVATION SYSTEM</a>
+      <a class="header item">NAEKANA SACCO TICKET RESERVATION SYSTEM</a>
     </div><br>
 	
 <div class="ui container" id="dynamic" style="margin-top:90px">
