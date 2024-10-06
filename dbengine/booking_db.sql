@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Dec 14, 2017 at 08:57 PM
--- Server version: 5.7.19
--- PHP Version: 5.6.31
+-- Host: 127.0.0.1
+-- Generation Time: Oct 06, 2024 at 08:01 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `booking_db`
 --
-CREATE DATABASE IF NOT EXISTS `booking_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `booking_db`;
 
 -- --------------------------------------------------------
 
@@ -30,17 +27,14 @@ USE `booking_db`;
 -- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
-  `fullname` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admin` (
+  `fullname` int(11) NOT NULL,
   `id` varchar(40) DEFAULT NULL,
   `contact` varchar(30) DEFAULT NULL,
   `email` varchar(140) DEFAULT NULL,
   `username` varchar(70) DEFAULT NULL,
-  `password` varchar(130) DEFAULT NULL,
-  PRIMARY KEY (`fullname`),
-  KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `password` varchar(130) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -48,16 +42,13 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Table structure for table `available_class`
 --
 
-DROP TABLE IF EXISTS `available_class`;
-CREATE TABLE IF NOT EXISTS `available_class` (
+CREATE TABLE `available_class` (
   `class_id` varchar(120) NOT NULL,
   `class_name` varchar(80) NOT NULL,
-  `class_capacity` smallint(6) NOT NULL DEFAULT '0',
-  `class_price` double NOT NULL DEFAULT '10',
-  `description` longtext,
-  PRIMARY KEY (`class_id`,`class_name`),
-  UNIQUE KEY `class_name` (`class_name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `class_capacity` smallint(6) NOT NULL DEFAULT 0,
+  `class_price` double NOT NULL DEFAULT 10,
+  `description` longtext DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -65,8 +56,7 @@ CREATE TABLE IF NOT EXISTS `available_class` (
 -- Table structure for table `booking_details`
 --
 
-DROP TABLE IF EXISTS `booking_details`;
-CREATE TABLE IF NOT EXISTS `booking_details` (
+CREATE TABLE `booking_details` (
   `order_ref` varchar(255) NOT NULL,
   `fullname` varchar(120) NOT NULL,
   `contact` varchar(40) DEFAULT NULL,
@@ -77,19 +67,15 @@ CREATE TABLE IF NOT EXISTS `booking_details` (
   `date_reserved` varchar(50) DEFAULT NULL,
   `transaction_id` varchar(190) NOT NULL,
   `account` varchar(130) NOT NULL,
-  `amount` varchar(50) NOT NULL,
-  PRIMARY KEY (`order_ref`),
-  KEY `available_classbooking_details` (`class_reserved`),
-  KEY `transaction_id` (`transaction_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `amount` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `booking_details`
 --
 
 INSERT INTO `booking_details` (`order_ref`, `fullname`, `contact`, `gender`, `class_reserved`, `destination`, `seats_reserved`, `date_reserved`, `transaction_id`, `account`, `amount`) VALUES
-('RA84O43T53E', 'George Wainaina Njeri', '0705481696', 'MALE', 'Middle Class Travel', 'MOMBASA to NAKURU', '1', 'November 30, 2017', '38329432422', 'MPESA', '52.03'),
-('BE19O27T62R', 'Samuel Kumano', '0342423', 'MALE', 'Middle Class Travel', 'NAKURU to MOMBASA', '1', 'December 07, 2017', '807678678', 'KCD_BANK', '52.03');
+('SB18C81O59T', 'Patrick Mwangi Wanjiku', 'frashid274@gmail.com', 'MALE', 'High Class Travel', 'MOMBASA to NAKURU', '1', 'October 03, 2024', '65555555555555', 'EQUITY_BANK', '52.03');
 
 -- --------------------------------------------------------
 
@@ -97,17 +83,13 @@ INSERT INTO `booking_details` (`order_ref`, `fullname`, `contact`, `gender`, `cl
 -- Table structure for table `tickets_generated`
 --
 
-DROP TABLE IF EXISTS `tickets_generated`;
-CREATE TABLE IF NOT EXISTS `tickets_generated` (
+CREATE TABLE `tickets_generated` (
   `ticket_ref` varchar(120) NOT NULL,
   `order_ref` varchar(120) NOT NULL,
   `travel_class` varchar(255) NOT NULL,
   `date_processed` datetime DEFAULT NULL,
-  `destination` varchar(120) DEFAULT NULL,
-  PRIMARY KEY (`ticket_ref`),
-  KEY `available_classtickets_generated` (`travel_class`),
-  KEY `booking_detailstickets_generated` (`order_ref`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `destination` varchar(120) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -115,14 +97,12 @@ CREATE TABLE IF NOT EXISTS `tickets_generated` (
 -- Table structure for table `transactions`
 --
 
-DROP TABLE IF EXISTS `transactions`;
-CREATE TABLE IF NOT EXISTS `transactions` (
-  `amount` double DEFAULT '0',
+CREATE TABLE `transactions` (
+  `amount` double DEFAULT 0,
   `payment_via` varchar(180) DEFAULT NULL,
   `transaction_id` varchar(210) NOT NULL,
-  `status` varchar(80) DEFAULT 'unused',
-  PRIMARY KEY (`transaction_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` varchar(80) DEFAULT 'unused'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `transactions`
@@ -130,6 +110,56 @@ CREATE TABLE IF NOT EXISTS `transactions` (
 
 INSERT INTO `transactions` (`amount`, `payment_via`, `transaction_id`, `status`) VALUES
 (7500, 'MPESA', 'LORSO93045KWE', 'used');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`fullname`),
+  ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `available_class`
+--
+ALTER TABLE `available_class`
+  ADD PRIMARY KEY (`class_id`,`class_name`),
+  ADD UNIQUE KEY `class_name` (`class_name`);
+
+--
+-- Indexes for table `booking_details`
+--
+ALTER TABLE `booking_details`
+  ADD PRIMARY KEY (`order_ref`),
+  ADD KEY `available_classbooking_details` (`class_reserved`),
+  ADD KEY `transaction_id` (`transaction_id`);
+
+--
+-- Indexes for table `tickets_generated`
+--
+ALTER TABLE `tickets_generated`
+  ADD PRIMARY KEY (`ticket_ref`),
+  ADD KEY `available_classtickets_generated` (`travel_class`),
+  ADD KEY `booking_detailstickets_generated` (`order_ref`);
+
+--
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`transaction_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `fullname` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
