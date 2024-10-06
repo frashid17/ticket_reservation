@@ -27,6 +27,6 @@
     Who is the Developer of this system?
   </div>
   <div class="content" id="c4">
-    <p class="transition">Good question, The developer and CEO of Swagfin Apps , George Wainaina Contact: <a>+254705418696</a> or Email me at: <a>georgewainaina18@gmail.com</a> for more inquiries. </p>
+    <p class="transition">Good question, The developer and CEO of Naekana Ticket Reservation System is Swaleh Salim Contact: <a>+254 707 205410</a> or Email me at: <a>swalehsalim001@gmail.com</a> for more inquiries. </p>
   </div>
 </div>
