@@ -21,8 +21,8 @@
       <div class="right menu">
         <div class="item">
           <div class="ui small input">
-		    <form>
-              <input placeholder="Search order.." name="search" />
+		  <form>
+            <input placeholder="Search order.." name="search" />
 			</form>
           </div>
         </div>
@@ -40,65 +40,56 @@
         </div>
 		
         <div class="column" id="content" style="display:none">
-          <div class="ui grid">
+	<div class="ui grid">
             <div class="row">
-              <h1 class="ui huge header">All Bookings</h1>
+         <h1 class="ui huge header">All Bookings</h1></div>
+        <div class="ui horizontal divider"> These are the Bookings the Details</div>      
+		<?php 
+//rejection
+if(isset($_GET['reject'])){
+$or=$_GET['reject'];
+require("../dbengine/dbconnect.php");
+if(mysqli_query($conn,"DELETE FROM booking_details WHERE order_ref='$or'")){
+echo ("<div class='ui positive message' style='margin:auto'>Successfully deleted/Rejected Order #$or.</div>");	
+}	
+else{
+echo ("<div class='ui negative message' style='margin:auto'>Error! Could not process rejection request for Order #$or ! </div>");	
+}	
+}
+//end of Php 
+?>
+		<div class="row">
+            <table class="ui single line striped selectable center aligned  table">
+<thead><tr><th>#Order Ref</th><th>Customer Name</th><th>Contact</th><th>Class Reserved</th><th>Destination</th><th>#No Seats</th><th>Travel Date</th><th>Operation</th></tr></thead>
+<tbody>
+<?php
+require("../dbengine/dbconnect.php");
+if(isset($_GET['search'])){$search=$_GET['search'];$data=mysqli_query($conn,"SELECT * FROM booking_details WHERE order_ref LIKE '%$search%' or fullname LIKE '%$search%' or class_reserved LIKE '%$search%' or destination LIKE '%$search%' or date_reserved LIKE '%$search%'");}
+else{$data=mysqli_query($conn,"SELECT * FROM booking_details");}
+
+if(($data) && (mysqli_num_rows($data) >0)){
+
+//getting data and generating a row
+while($row=mysqli_fetch_assoc($data))
+{$order=$row['order_ref'];
+echo("<tr><td>".$row['order_ref']."</td><td>".$row['fullname']."</td><td>".$row['contact']."</td><td>".$row['class_reserved']."</td><td>".$row['destination']."</td><td>".$row['seats_reserved']."</td><td>".$row['date_reserved']."</td><td><a class='ui tiny button orange' href='bookings.php?reject=$order'>Reject</a></td></tr>");
+}		
+}
+else{
+echo "<tr><td colspan='9'>No records match found! </td></tr>";	
+}
+mysqli_close($conn);
+?>
+</tbody>
+            </table>
             </div>
-            <div class="ui horizontal divider">These are the Bookings the Details</div>      
-
-			<?php 
-			// Rejection
-			if(isset($_GET['reject'])){
-			  $or=$_GET['reject'];
-			  require("../dbengine/dbconnect.php");
-			  if(mysqli_query($conn,"DELETE FROM booking_details WHERE order_ref='$or'")){
-				echo ("<div class='ui positive message' style='margin:auto'>Successfully deleted/Rejected Order #$or.</div>");	
-			  } else {
-				echo ("<div class='ui negative message' style='margin:auto'>Error! Could not process rejection request for Order #$or ! </div>");	
-			  }
-			}
-			// End of PHP
-			?>
-
-		    <div class="row">
-              <table class="ui single line striped selectable center aligned table">
-                <thead>
-                  <tr><th>#Order Ref</th><th>Customer Name</th><th>Contact</th><th>Class Reserved</th><th>Destination</th><th>#No Seats</th><th>Travel Date</th><th>Operation</th></tr>
-                </thead>
-                <tbody>
-                  <?php
-				  require("../dbengine/dbconnect.php");
-				  if(isset($_GET['search'])){
-				    $search=$_GET['search'];
-				    $data=mysqli_query($conn,"SELECT * FROM booking_details WHERE order_ref LIKE '%$search%' or fullname LIKE '%$search%' or class_reserved LIKE '%$search%' or destination LIKE '%$search%' or date_reserved LIKE '%$search%'");
-				  } else {
-				    $data=mysqli_query($conn,"SELECT * FROM booking_details");
-				  }
-
-				  if(($data) && (mysqli_num_rows($data) >0)){
-				    // Getting data and generating a row
-				    while($row=mysqli_fetch_assoc($data)) {
-					  $order=$row['order_ref'];
-					  echo("<tr><td>".$row['order_ref']."</td><td>".$row['fullname']."</td><td>".$row['contact']."</td><td>".$row['class_reserved']."</td><td>".$row['destination']."</td><td>".$row['seats_reserved']."</td><td>".$row['date_reserved']."</td><td><a class='ui tiny button orange' href='bookings.php?reject=$order'>Reject</a></td></tr>");
-				    }
-				  } else {
-				    echo "<tr><td colspan='9'>No records match found! </td></tr>";
-				  }
-				  mysqli_close($conn);
-				  ?>
-                </tbody>
-              </table>
-            </div>
-		  </div>
+			</div>	
 		</div>
+      
 	  </div>
     </div>
-
     <style type="text/css">
       body {
-        image: url('C:/xampp/htdocs/Ticket_Reservation_system/images/your-image.jpg');
-        background-size: cover;
-        background-position: center;
         display: relative;
       }
       

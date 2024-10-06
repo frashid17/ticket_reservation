@@ -73,7 +73,7 @@
         setTimeout(function() {
             $('#proceed').siblings().hide();
             $('.gload').hide();
-            document.getElementById("proceed").innerHTML = "<a href='booking.php' class='ui button small green'>Done! Proceed</a> <a href='../admin/login.php' class='ui button small orange'>Admin Login</a> ";
+            document.getElementById("proceed").innerHTML = "<a href='booking.php' class='ui button small green'>Book Here</a> <a href='../admin/login.php' class='ui button small orange'>Admin Login</a> ";
         }, 5000);
     </script>
 </body>

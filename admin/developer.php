@@ -51,7 +51,7 @@
   <div class="ui horizontal divider">About me</div>
 		<p>Hi, there!. This is Swaleh, a student at Kenya Methodist University</p> 
 		<div class="ui horizontal divider">Contacts Details</div>
-		<p>Wondering where to find me? Reach me at;<br> Email: <a>georgewainaina18@gmail.com</a> <br>Personal Contact : <a>+254 705418696</a><br> I am willing to teach new programmers</p>
+		<p>Wondering where to find me? Reach me at;<br> Email: <a>swalehsalim001@gmail.com</a> <br>Personal Contact : <a>+254 705418696</a><br> I am willing to teach new programmers</p>
 		</div>		
         </div>
 			</div>	
