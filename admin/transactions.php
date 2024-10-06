@@ -17,7 +17,7 @@
   </head>
   <body>
     <div class="ui inverted huge borderless fixed fluid menu">
-      <a class="header item">TICKET RESERVATION SYSTEM</a>
+      <a class="header item">NAEKANA SACCO TICKET RESERVATION SYSTEM</a>
       <div class="right menu">
         <div class="item">
           <div class="ui small input">
